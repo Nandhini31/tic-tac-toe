@@ -4,10 +4,15 @@
     this.player1 = new Player('X')
     this.player2 = new Player('O')
     this.grid = new Grid()
+    this.current_player = this.player1
+
   }
-  Grid.prototype.newGrid = function(){
-    return this.grid = [[null,null,null],[null,null,null],[null,null,null]]
+
+  Game.prototype.playermove = function(x,y){
+    this.grid.claimField(x,y,current_player.getsymbol())
   }
+
+
 
   exports.Game = Game;
 })(this);

@@ -1,11 +1,17 @@
 (function(exports){
 
   function Grid(){
-    this.new_grid = []
+    this.new_grid = [[null,null,null],
+                            [null,null,null],
+                            [null,null,null]]
   }
   Grid.prototype.newGrid = function(){
-    return this.grid = [[null,null,null],[null,null,null],[null,null,null]]
+      return this.new_grid
   }
-  
+
+  Grid.prototype.claimField = function(x,y,symbol){
+    return this.new_grid[x][y] = symbol
+  }
+
   exports.Grid = Grid;
 })(this);

@@ -7,7 +7,7 @@ describe("Player", function(){
   });
 
   it('get players symbol',function() {
-    expect(player.symbol).toEqual('O')
+    expect(player.getsymbol()).toEqual('O')
   });
 
 });

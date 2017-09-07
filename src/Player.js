@@ -2,7 +2,7 @@
   function Player(symbol){
     this.symbol = symbol
   }
-  Player.prototype.symbol = function () {
+  Player.prototype.getsymbol = function () {
     return this.symbol
   };
   exports.Player = Player;

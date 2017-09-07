@@ -15,4 +15,8 @@ describe("Game", function(){
 
 
 
+  // it('player can claim field',function() {
+  //   expect(game.claim_field(0,2));
+  // });
+
   });

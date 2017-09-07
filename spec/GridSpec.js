@@ -11,7 +11,7 @@ describe("Grid", function(){
   });
 
   it('initialized with an empty 2d array',function() {
-    expect(grid.newGrid()).toBeArray;
+    expect(grid.newGrid()).toEqual(jasmine.any(Array));
   });
 
 });
