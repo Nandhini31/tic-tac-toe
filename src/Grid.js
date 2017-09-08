@@ -9,16 +9,19 @@
       return this.new_grid
   }
   Grid.prototype.claimField = function(x,y,symbol){
+    this.checkFieldLimit(x,y)
+
     return this.new_grid[x][y] = symbol
   }
 
   Grid.prototype.isfieldClaimed = function(x,y){
+
     return this.new_grid[x][y] !== null
   }
 
   Grid.prototype.checkFieldLimit  = function(x,y){
     if(x > 2 || y > 2) {
-      throw new Error('Chosen Field is outside the Grid');
+      throw "Chosen Field is outside the Grid";
     }
   }
 

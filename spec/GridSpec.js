@@ -30,7 +30,7 @@ describe("Grid", function(){
   });
 
   it('throws error if a field location > 2',function(){
-      expect(grid.checkFieldLimit(0,4)).toThrow('Chosen Field is outside the Grid');
+      expect(function(){grid.checkFieldLimit(0,4)}).toThrow("Chosen Field is outside the Grid");
   });
 
 });
