@@ -28,28 +28,59 @@
     return each_row.includes(true);
     };
 
-
   Grid.prototype.checkEachRow = function(grid,symbol){
-      return grid.map(function(row){
+      return this.new_grid.map(function(row){
         return row.every(function(field){
             return field === symbol
             });
         });
     };
 
+  Grid.prototype.playerClaimedColumn = function(grid,symbol){
+    var columnsArray = this.transposeGrid(grid)
+    var columnsClaimed = this.checkEachRow(columnsArray,symbol)
+    return columnsClaimed.includes(true)
+    }
+
  Grid.prototype.checkLeftDiagonal = function(grid,symbol){
-    var ldiagnol =[grid[0][0],grid[1][1],grid[2][2]]
-    return ldiagnol.every(function(field){
+    var ldiagonal = this.getLeftDiagonal(grid)
+    return ldiagonal.every(function(field){
         return field == symbol
     });
  }
 
  Grid.prototype.checkRightDiagonal = function(grid,symbol){
-    var rdiagnol =[grid[2][0],grid[1][1],grid[0][2]]
-    return rdiagnol.every(function(field){
+    var rdiagonal = this.getRightDiagonal(grid)
+    return rdiagonal.every(function(field){
         return field == symbol
     });
  }
+
+ Grid.prototype.getLeftDiagonal =function(grid){
+   var ldiagonal = []
+    for(i=0;i<=2;i++){
+      ldiagonal.push(grid[i][i])
+    }
+    return ldiagonal
+ }
+
+ Grid.prototype.getRightDiagonal = function(grid){
+   var rdiagonal = []
+   for(i=2;i<=0;i--){
+     for(j=0;j<=2;j++){
+       rdiagonal.push(grid[i][j])
+     }
+   }
+   return rdiagonal
+ }
+
+Grid.prototype.transposeGrid = function(grid){
+  return Object.keys(grid[0]).map(function (column) {
+    return grid.map(function (row) {
+      return row[column];
+    });
+  });
+}
 
   exports.Grid = Grid;
 })(this);
