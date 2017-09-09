@@ -10,12 +10,10 @@
   }
   Grid.prototype.claimField = function(x,y,symbol){
     this.checkFieldLimit(x,y)
-
     return this.new_grid[x][y] = symbol
   }
 
-  Grid.prototype.isfieldClaimed = function(x,y){
-
+  Grid.prototype.isFieldClaimed = function(x,y){
     return this.new_grid[x][y] !== null
   }
 
@@ -24,6 +22,34 @@
       throw "Chosen Field is outside the Grid";
     }
   }
+
+  Grid.prototype.playerClaimedRow = function(grid,symbol){
+    var each_row = this.checkEachRow(grid,symbol)
+    return each_row.includes(true);
+    };
+
+
+  Grid.prototype.checkEachRow = function(grid,symbol){
+      return grid.map(function(row){
+        return row.every(function(field){
+            return field === symbol
+            });
+        });
+    };
+
+ Grid.prototype.checkLeftDiagonal = function(grid,symbol){
+    var ldiagnol =[grid[0][0],grid[1][1],grid[2][2]]
+    return ldiagnol.every(function(field){
+        return field == symbol
+    });
+ }
+
+ Grid.prototype.checkRightDiagonal = function(grid,symbol){
+    var rdiagnol =[grid[2][0],grid[1][1],grid[0][2]]
+    return rdiagnol.every(function(field){
+        return field == symbol
+    });
+ }
 
   exports.Grid = Grid;
 })(this);

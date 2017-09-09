@@ -17,5 +17,6 @@
     (this.current_player == this.player1) ? (this.current_player = this.player2) : (this.current_player = this.player1)
   }
 
+
   exports.Game = Game;
 })(this);
