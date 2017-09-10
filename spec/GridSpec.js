@@ -46,18 +46,32 @@ describe("Grid", function(){
     expect(grid.playerClaimedRow(grid.new_grid,'X')).toBe(false);
   });
 
-  it('returns true if player has  claimed a left diagonal',function(){
+  it('returns true if player has claimed a left diagonal',function(){
     grid.claimField(0,0,'X');
     grid.claimField(1,1,'X');
     grid.claimField(2,2,'X');
     expect(grid.checkLeftDiagonal(grid.new_grid,'X')).toBe(true);
   });
 
-  it('returns true if player has  claimed a right diagonal',function(){
-    grid.claimField(2,0,'X');
+  it('returns false if player has claimed a left diagonal',function(){
+    grid.claimField(0,0,'X');
     grid.claimField(1,1,'X');
+    grid.claimField(1,2,'X');
+    expect(grid.checkLeftDiagonal(grid.new_grid,'X')).toBe(false);
+  });
+
+  it('returns true if player has claimed a right diagonal',function(){
     grid.claimField(0,2,'X');
+    grid.claimField(1,1,'X');
+    grid.claimField(2,0,'X');
     expect(grid.checkRightDiagonal(grid.new_grid,'X')).toBe(true);
+  });
+
+  it('returns false if player has claimed a right diagonal',function(){
+    grid.claimField(0,2,'X');
+    grid.claimField(1,1,'X');
+    grid.claimField(2,2,'X');
+    expect(grid.checkRightDiagonal(grid.new_grid,'X')).toBe(false);
   });
 
   it('returns true if player has claimed a column',function(){

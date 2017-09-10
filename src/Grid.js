@@ -8,7 +8,7 @@
   Grid.prototype.newGrid = function(){
       return this.new_grid
   }
-  
+
   Grid.prototype.claimField = function(x,y,symbol){
     this.checkFieldLimit(x,y)
     return this.new_grid[x][y] = symbol
@@ -68,19 +68,21 @@
  }
 
  Grid.prototype.getLeftDiagonal =function(grid){
-   var ldiagonal = []
-    for(i=0;i<=2;i++){
+   var ldiagonal = [];
+    for(var i=0;i<=2;i++){
       ldiagonal.push(grid[i][i])
     }
     return ldiagonal
  }
 
  Grid.prototype.getRightDiagonal = function(grid){
-   var rdiagonal = []
-   for(i=2;i<=0;i--){
-     for(j=0;j<=2;j++){
+   var rdiagonal = [];
+   for(var i=0;i<=2;i++){
+     for(var j=0;j<=2;j++){
+       if(i+j === grid.length - 1){
        rdiagonal.push(grid[i][j])
      }
+    }
    }
    return rdiagonal
  }

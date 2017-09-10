@@ -19,4 +19,12 @@ describe("Game", function(){
     expect(game.current_player).toEqual(player2)
   });
 
+  it('game over is false',function(){
+    expect(game.fieldstaken()).toEqual(false)
+  });
+
+  it('has current player won',function(){
+      expect(game.playerWon()).toEqual(false)
+  });
+
   });
