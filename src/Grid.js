@@ -8,6 +8,7 @@
   Grid.prototype.newGrid = function(){
       return this.new_grid
   }
+  
   Grid.prototype.claimField = function(x,y,symbol){
     this.checkFieldLimit(x,y)
     return this.new_grid[x][y] = symbol
@@ -23,13 +24,22 @@
     }
   }
 
+  Grid.prototype.allFieldsClaimed = function(){
+    var eachField = this.new_grid.every(function(row){
+         return row.every(function(field){
+           return field !== null;
+         });
+       });
+       return eachField
+  }
+
   Grid.prototype.playerClaimedRow = function(grid,symbol){
     var each_row = this.checkEachRow(grid,symbol)
     return each_row.includes(true);
     };
 
   Grid.prototype.checkEachRow = function(grid,symbol){
-      return this.new_grid.map(function(row){
+      return grid.map(function(row){
         return row.every(function(field){
             return field === symbol
             });
@@ -48,6 +58,7 @@
         return field == symbol
     });
  }
+
 
  Grid.prototype.checkRightDiagonal = function(grid,symbol){
     var rdiagonal = this.getRightDiagonal(grid)
