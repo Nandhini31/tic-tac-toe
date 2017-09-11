@@ -11,8 +11,8 @@
 
   Game.prototype.playerMove = function(x,y){
     var symbol = this.current_player.getSymbol();
-    if(this.grid.isFieldClaimed(x,y){
-      console.log("This field is already taken")
+    if(this.grid.isFieldClaimed(x,y)){
+      throw "This field is already taken";
     }
     else {
       this.grid.claimField(x,y,symbol);
